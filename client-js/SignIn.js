@@ -4,6 +4,7 @@ import Alert from 'react-s-alert'
 import { Link } from 'react-router-dom'
 import fetchJson from './utilities/fetch-json.js'
 import GooglePlusIcon from 'react-icons/lib/fa/google-plus'
+import OAuthIcon from 'react-icons/lib/fa/at'
 
 class SignIn extends React.Component {
   state = {
@@ -92,11 +93,29 @@ class SignIn extends React.Component {
         </a>
       </div>
     )
+    const oauthForm = (
+      <div>
+        <a href={config.baseUrl + '/auth/oauth'}>
+          <button className="btn btn-danger btn-block mt3">
+            <OAuthIcon
+              style={{
+                width: '22px',
+                height: '22px',
+                marginRight: '12px',
+                marginBottom: '2px'
+              }}
+            />
+            Log in with OAuth2
+          </button>
+        </a>
+      </div>
+    )    
     return (
       <div className="pt5 measure center" style={{ width: '300px' }}>
         <h1 className="f2 tc">SQLPad</h1>
         {'local' in passport.strategies ? localForm : null}
         {'google' in passport.strategies ? googleForm : null}
+        {'oauth2' in passport.strategies ? oauthForm : null}
       </div>
     )
   }

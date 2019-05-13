@@ -38,6 +38,7 @@ class App extends React.Component {
         config: json.config,
         smtpConfigured: json.smtpConfigured,
         googleAuthConfigured: json.googleAuthConfigured,
+        oauthConfigured: json.oauthConfigured,
         currentUser: json.currentUser,
         passport: json.passport,
         adminRegistrationOpen: json.adminRegistrationOpen,

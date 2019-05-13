@@ -13,6 +13,11 @@ const {
   googleClientId,
   googleClientSecret,
   publicUrl,
+  oauthAuthorizationUrl,
+  oauthTokenUrl,
+  oauthUserInfoUrl,
+  oauthClientId,
+  oauthClientSecret,
   dbPath,
   debug
 } = configUtil.getPreDbConfig()
@@ -124,6 +129,17 @@ const routers = [
 if (googleClientId && googleClientSecret && publicUrl) {
   if (debug) {
     console.log('Enabling Google authentication Strategy.')
+  }
+  routers.push(require('./routes/google.js'))
+}
+
+if (oauthAuthorizationUrl && 
+  oauthTokenUrl &&
+  oauthUserInfoUrl &&
+  oauthClientId &&
+  oauthClientSecret && publicUrl) {
+  if (debug) {
+    console.log('Enabling OAuth authentication Strategy.')
   }
   routers.push(require('./routes/oauth.js'))
 }

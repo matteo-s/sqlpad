@@ -3,13 +3,13 @@ const router = require('express').Router()
 const { baseUrl } = require('../lib/config').getPreDbConfig()
 
 router.get(
-  '/auth/oauth',
-  passport.authenticate('oauth2', { scope: ['profile email'] })
+  '/auth/google',
+  passport.authenticate('google', { scope: ['profile email'] })
 )
 
 router.get(
-  '/auth/oauth/callback',
-  passport.authenticate('oauth2', {
+  '/auth/google/callback',
+  passport.authenticate('google', {
     successRedirect: baseUrl + '/',
     failureRedirect: baseUrl + '/signin'
   })

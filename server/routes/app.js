@@ -35,6 +35,7 @@ router.get('*/api/app', function(req, res) {
         config: config.getUiConfig(),
         smtpConfigured: config.smtpConfigured(),
         googleAuthConfigured: config.googleAuthConfigured(),
+        oauthConfigured: config.oauthConfigured(),
         version: version.get(),
         passport: {
           strategies

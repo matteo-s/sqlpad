@@ -139,6 +139,51 @@ const configItems = [
   },
   {
     interface: 'env',
+    key: 'oauthAuthorizationUrl',
+    envVar: 'OAUTH_AUTHORIZATION_URL',
+    sensitive: true,
+    description:
+      "OAuth Authorization endpoint for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
+    key: 'oauthTokenUrl',
+    envVar: 'OAUTH_TOKEN_URL',
+    sensitive: true,
+    description:
+      "OAuth Token endpoint for OAuth setup.'",
+    default: ''
+  },
+  {
+    interface: 'env',
+    key: 'oauthUserInfoUrl',
+    envVar: 'OAUTH_USERINFO_URL',
+    sensitive: true,
+    description:
+      "OAuth UserInfo endpoint for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
+    key: 'oauthClientId',
+    envVar: 'OAUTH_CLIENT_ID',
+    sensitive: true,
+    description:
+      "OAuth Client ID used for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
+    key: 'oauthClientSecret',
+    envVar: 'OAUTH_CLIENT_SECRET',
+    sensitive: true,
+    description:
+      "OAuth Client Secret used for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
     key: 'disableUserpassAuth',
     envVar: 'DISABLE_USERPASS_AUTH',
     description:

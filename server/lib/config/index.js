@@ -141,7 +141,14 @@ exports.getHelper = function getHelper(db) {
         all.smtpPort &&
         all.publicUrl,
       googleAuthConfigured: () =>
-        all.publicUrl && all.googleClientId && all.googleClientSecret
+        all.publicUrl && all.googleClientId && all.googleClientSecret,
+      oauthConfigured: () =>
+        all.publicUrl && 
+        all.oauthAuthorizationUrl && 
+        all.oauthTokenUrl && 
+        all.oauthUserInfoUrl && 
+        all.oauthClientId && 
+        all.oauthClientSecret
     }
 
     return configHelper
