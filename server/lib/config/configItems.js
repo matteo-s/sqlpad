@@ -184,6 +184,24 @@ const configItems = [
   },
   {
     interface: 'env',
+    key: 'oauthRoleField',
+    envVar: 'OAUTH_ROLE_FIELD',
+    sensitive: true,
+    description:
+      "OAuth mapping field for Role discovery used for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
+    key: 'oauthRolePrefix',
+    envVar: 'OAUTH_ROLE_PREFIX',
+    sensitive: true,
+    description:
+      "OAuth mapping prefix for Role discovery used for OAuth setup.",
+    default: ''
+  },
+  {
+    interface: 'env',
     key: 'disableUserpassAuth',
     envVar: 'DISABLE_USERPASS_AUTH',
     description:

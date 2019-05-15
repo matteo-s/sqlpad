@@ -8,6 +8,8 @@ const User = require('../models/User.js')
 const configUtil = require('../lib/config')
 const db = require('../lib/db')
 const checkWhitelist = require('../lib/check-whitelist.js')
+const getRoleFromOAuth = require('../lib/check-role.js')
+
 const {
   baseUrl,
   googleClientId,
@@ -207,10 +209,24 @@ function passportOAuthStrategyHandler(
 
 
       const whitelistedDomains = config.get('whitelistedDomains')
-      if (openAdminRegistration || checkWhitelist(whitelistedDomains, email)) {
+      const rolePrefix = config.get('oauthRolePrefix')
+      const roleField = config.get('oauthRoleField')
+
+      var role = openAdminRegistration ? 'admin' : 'editor'
+
+      if(rolePrefix && roleField) {
+        var roles = []
+        if(profile._json.hasOwnProperty(roleField)) {
+          roles = profile._json[roleField];
+        }
+        role = getRoleFromOAuth(roles, rolePrefix)
+      }
+
+      if ((openAdminRegistration || checkWhitelist(whitelistedDomains, email)) 
+      && role !== '') {
         user = new User({
           email,
-          role: openAdminRegistration ? 'admin' : 'editor',
+          role: role,
           signupDate: new Date()
         })
         return user.save().then(newUser => {
